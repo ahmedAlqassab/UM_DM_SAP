@@ -11,4 +11,9 @@ service uM_Donations_ManagementSrv {
   entity Donors as projection on my.Donors;
   @odata.draft.enabled
   entity Donations as projection on my.Donations;
+   @odata.draft.enabled
+  entity campaignVH as projection on my.campaignVH;
+   @odata.draft.enabled
+  entity cityVH as projection on my.cityVH;
+
 }

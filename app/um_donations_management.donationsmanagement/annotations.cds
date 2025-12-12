@@ -20,23 +20,22 @@ annotate service.Donations with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : donor.status,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : donor.isRecurringDonor,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : donor.isHNI,
+                @UI.Hidden,
             },
             {
                 $Type : 'UI.DataField',
                 Value : donor.donortype,
+                @UI.Hidden,
             },
             {
                 $Type : 'UI.DataField',
                 Value : city,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : donor.status,
+                @UI.Hidden,
             },
             {
                 $Type : 'UI.DataField',
@@ -82,6 +81,7 @@ annotate service.Donations with @(
         {
             $Type : 'UI.DataField',
             Value : city,
+            Label : 'City',
         },
         {
             $Type : 'UI.DataField',
@@ -149,6 +149,7 @@ annotate service.Donations with {
             Label : 'Currency',
         },
         Common.ValueListWithFixedValues : true,
+        Common.FieldControl : #Mandatory,
 )};
 
 annotate service.Donations with {
@@ -166,7 +167,62 @@ annotate service.Donations with {
             Label : 'Cause',
         },
         Common.ValueListWithFixedValues : true,
+        Common.FieldControl : #Optional,
 )};
 
 
+
+annotate service.Donations with {
+    invoicenumber @Common.FieldControl : #ReadOnly
+};
+
+annotate service.Donations with {
+    amount @Common.FieldControl : #Mandatory
+};
+
+annotate service.Donations with {
+    donor @Common.FieldControl : #Mandatory
+};
+
+annotate service.Donations with {
+    city @(
+        Common.FieldControl : #Mandatory,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'cityVH',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : city,
+                    ValueListProperty : 'label',
+                },
+            ],
+            Label : 'CityH',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
+
+annotate service.Donations with {
+    donationdate @Common.FieldControl : #Mandatory
+};
+
+annotate service.Donations with {
+    campaign @(
+        Common.FieldControl : #Mandatory,
+        Common.ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'campaignVH',
+            Parameters : [
+                {
+                    $Type : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : campaign,
+                    ValueListProperty : 'code',
+                },
+            ],
+            Label : 'Campaign',
+        },
+        Common.ValueListWithFixedValues : true,
+    )
+};
 

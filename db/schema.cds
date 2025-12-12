@@ -10,6 +10,16 @@ entity CauseVH {
   key code  : String;
       label : String;
 }
+entity campaignVH {
+  key code  : String;
+      label : String;
+}
+
+
+entity cityVH {
+  key code  : String;
+      label : String;
+}
 
 
 entity Donors : cuid {
@@ -27,8 +37,8 @@ entity Donations : cuid {
   amount: Integer;
   currencycode: String(10) default 'USD';
   donationdate: Date default CURRENT_DATE;
-  cause: String(100);
-  campaign: String(100);
+  cause: String(100) default 'None';
+  campaign: String(100) default 'None';
   invoicenumber: String(50);
   donor: Association to Donors;
 }

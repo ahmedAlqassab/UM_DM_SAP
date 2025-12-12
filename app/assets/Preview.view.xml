@@ -16,7 +16,7 @@
     <l:BlockLayout>
         <l:BlockLayoutRow>
             <l:BlockLayoutCell
-                title="UM_Donations_Management"
+                title="Donations Management"
                 titleAlignment="Left"
                 class="customCellImageBackground">
                 <VBox>

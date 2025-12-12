@@ -90,7 +90,7 @@ annotate uM_Donations_ManagementSrv.Donations with {
   donorName @title: 'Donor Name';
   donorEmail @title: 'Donor Email';
   donorPhone @title: 'Donor Phone';
-  city @title: 'City';
+  city @title: 'Donation City';
   amount @title: 'Amount';
   currencycode @title: 'Currency Code';
   donationdate @title: 'Donation Date';
