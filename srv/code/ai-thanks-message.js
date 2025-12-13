@@ -3,6 +3,7 @@
  * @Before(event = { "CREATE" }, entity = "uM_Donations_ManagementSrv.Donations")
  * @param {cds.Request} request - User information, tenant-specific CDS model, headers and query parameters
 */
+// require('dotenv').config();
 const { OrchestrationClient, buildAzureContentSafetyFilter} = require('@sap-ai-sdk/orchestration');
 module.exports = async function (request) {
 	// Your code here
@@ -23,6 +24,8 @@ module.exports = async function (request) {
 		return request.reject(404, 'Donor not found.');
 	}
 	console.log(donor, "**********************");
+	console.log(process.env.AICORE_SERVICE_KEY); // check it works
+
 
 	// // Fetch the Donation details using the Donor ID
 	// const donations = await SELECT.from(Donations).where({ donor_ID: donorID });
@@ -53,7 +56,7 @@ module.exports = async function (request) {
 
 
 
-	// try {
+	try {
 		const orchestrationClient = new OrchestrationClient(
 			{
 				promptTemplating: {
@@ -89,14 +92,14 @@ module.exports = async function (request) {
 		request.data.message = generatedDescription;
 		console.log(request.data, "**********************");
 		// Return the generated description
-		// return generatedDescription;
-	// }
-	// catch (error) {
-	// 	console.log(
-	// 		`Error while generating Donor Description.
-	// Error: ${error}`
-	// 	);
-	// 	throw error;
-	// }
+		return generatedDescription;
+	}
+	catch (error) {
+		console.log(
+			`Error while generating Donor Description.
+	Error: ${error}`
+		);
+		throw error;
+	}
 
 }

@@ -51,15 +51,14 @@ annotate service.Donations with @(
                 $Type : 'UI.DataField',
                 Value : campaign,
             },
-            {
-                $Type : 'UI.DataField',
-                Value : message,
-                Label : 'message',
-            },
             
         ],
     },
     UI.LineItem : [
+        {
+            $Type : 'UI.DataField',
+            Value : invoicenumber,
+        },
         {
             $Type : 'UI.DataField',
             Label : 'Donor',
@@ -98,11 +97,31 @@ annotate service.Donations with @(
             $Type : 'UI.DataField',
             Value : campaign,
         },
+    ],
+    UI.Facets : [
         {
-            $Type : 'UI.DataField',
-            Value : invoicenumber,
+            $Type : 'UI.ReferenceFacet',
+            ID : 'Main',
+            Label : 'General Information',
+            Target : '@UI.FieldGroup#Main',
+        },
+        {
+            $Type : 'UI.ReferenceFacet',
+            Label : 'Message',
+            ID : 'Message',
+            Target : '@UI.FieldGroup#Message',
         },
     ],
+    UI.FieldGroup #Message : {
+        $Type : 'UI.FieldGroupType',
+        Data : [
+            {
+                $Type : 'UI.DataField',
+                Value : message,
+                Label : 'message',
+            },
+        ],
+    },
 );
 
 annotate service.Donors with {
