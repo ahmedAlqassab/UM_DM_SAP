@@ -30,6 +30,7 @@ entity Donors : cuid {
   donortype: String(20);
   isRecurringDonor: Boolean;
   isHNI: Boolean;
+  
 }
 
 entity Donations : cuid {
@@ -41,4 +42,5 @@ entity Donations : cuid {
   campaign: String(100) default 'None';
   invoicenumber: String(50);
   donor: Association to Donors;
+  message: String;
 }

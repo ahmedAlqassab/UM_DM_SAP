@@ -3,10 +3,15 @@
  * @version(2.0)
  */
 const LCAPApplicationService = require('@sap/low-code-event-handler');
+const ai_Thanks_Message = require('./code/ai-thanks-message');
 const auto_Generate_Inv = require('./code/Auto-generate-inv');
 
 class uM_Donations_ManagementSrv extends LCAPApplicationService {
     async init() {
+
+        this.before('CREATE', 'Donations', async (request) => {
+            await ai_Thanks_Message(request);
+        });
 
         this.before('CREATE', 'Donations', async (request) => {
             await auto_Generate_Inv(request);

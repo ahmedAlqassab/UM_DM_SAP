@@ -20,16 +20,6 @@ annotate service.Donations with @(
             },
             {
                 $Type : 'UI.DataField',
-                Value : donor.isHNI,
-                @UI.Hidden,
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : donor.donortype,
-                @UI.Hidden,
-            },
-            {
-                $Type : 'UI.DataField',
                 Value : city,
             },
             {
@@ -60,6 +50,11 @@ annotate service.Donations with @(
             {
                 $Type : 'UI.DataField',
                 Value : campaign,
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : message,
+                Label : 'message',
             },
             
         ],
@@ -223,6 +218,19 @@ annotate service.Donations with {
             Label : 'Campaign',
         },
         Common.ValueListWithFixedValues : true,
+    )
+};
+
+annotate service.Donations with {
+    massage @(
+        UI.MultiLineText : true,
+        )
+};
+
+annotate service.Donations with {
+    message @(
+        UI.MultiLineText : true,
+        Common.FieldControl : #ReadOnly,
     )
 };
 
