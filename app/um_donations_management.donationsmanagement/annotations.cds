@@ -107,7 +107,7 @@ annotate service.Donations with @(
         },
         {
             $Type : 'UI.ReferenceFacet',
-            Label : 'Message',
+            Label : 'AI Generated Message',
             ID : 'Message',
             Target : '@UI.FieldGroup#Message',
         },
