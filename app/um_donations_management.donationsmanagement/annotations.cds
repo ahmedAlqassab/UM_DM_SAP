@@ -54,7 +54,7 @@ annotate service.Donations with @(
             {
                 $Type : 'UI.DataField',
                 Value : donation_tier,
-                Label : 'donation_tier',
+                Label : 'Donation Tier',
             },
             
         ],
