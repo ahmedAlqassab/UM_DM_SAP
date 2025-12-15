@@ -75,6 +75,7 @@ module.exports = async function (request) {
 										Donor Details: ${resultDonor}
 										Donation details: ${resultDonation}
 										My organization name: United Minds Foundation
+									
 
 										do not Write as an email`,
 							}
@@ -90,8 +91,11 @@ module.exports = async function (request) {
 		
 		console.log(`Successfully executed chat completion. ${generatedDescription}`);
 		request.data.message = generatedDescription;
-		console.log(request.data, "**********************");
+		console.log(request.data);
 		// Return the generated description
+		request.info({ message: generatedDescription });
+
+        console.log(request.data, "********");
 		return generatedDescription;
 	}
 	catch (error) {

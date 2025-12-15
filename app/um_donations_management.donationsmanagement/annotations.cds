@@ -51,6 +51,11 @@ annotate service.Donations with @(
                 $Type : 'UI.DataField',
                 Value : campaign,
             },
+            {
+                $Type : 'UI.DataField',
+                Value : donation_tier,
+                Label : 'donation_tier',
+            },
             
         ],
     },
@@ -251,5 +256,9 @@ annotate service.Donations with {
         UI.MultiLineText : true,
         Common.FieldControl : #ReadOnly,
     )
+};
+
+annotate service.Donations with {
+    donation_tier @Common.FieldControl : #ReadOnly
 };
 

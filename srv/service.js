@@ -5,9 +5,20 @@
 const LCAPApplicationService = require('@sap/low-code-event-handler');
 const ai_Thanks_Message = require('./code/ai-thanks-message');
 const auto_Generate_Inv = require('./code/Auto-generate-inv');
+const donations_Logic = require('./code/donations-logic');
+const donations_Ai_Thanks_Message_Edit = require('./code/donations-ai-thanks-message-edit');
+const donations_Logic_edit = require('./code/donations-logic_edit');
 
 class uM_Donations_ManagementSrv extends LCAPApplicationService {
     async init() {
+
+           this.before('CREATE', 'Donations', async (request) => {
+            await donations_Logic(request);
+        });
+ 
+         this.before('UPDATE', 'Donations', async (request) => {
+            await donations_Logic_edit(request);
+        });
 
         this.before('CREATE', 'Donations', async (request) => {
             await ai_Thanks_Message(request);
@@ -16,6 +27,14 @@ class uM_Donations_ManagementSrv extends LCAPApplicationService {
         this.before('CREATE', 'Donations', async (request) => {
             await auto_Generate_Inv(request);
         });
+
+     
+
+        this.before('UPDATE', 'Donations', async (request) => {
+            await ai_Thanks_Message(request);
+        });
+
+       
 
         return super.init();
     }

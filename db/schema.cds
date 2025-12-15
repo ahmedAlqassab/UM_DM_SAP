@@ -43,4 +43,5 @@ entity Donations : cuid {
   invoicenumber: String(50);
   donor: Association to Donors;
   message: String;
+  donation_tier: String;
 }
